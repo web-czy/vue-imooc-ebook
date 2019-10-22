@@ -19,10 +19,14 @@ document.addEventListener('COMContentLoaded', () => {
 })
 </script>
 
-<style scoped lang='scss'>
+<style lang='scss' scoped>
+@import './assets/styles/global.scss';
+
 .text {
   font-family: 'Days One';
-  font-size: 20px;
+  // 在375标准像素下的20px
+  // 会进行等比例缩放
+  font-size: px2rem(20);
   color: orange;
 }
 </style>

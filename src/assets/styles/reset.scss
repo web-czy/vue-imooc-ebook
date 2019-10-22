@@ -132,6 +132,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  // 禁用长按手势
   user-select: none;
   overflow: hidden;
   font-family: 'PingFangSC-Light', 'PingFang SC', 'STHeitiSC-Light',
