@@ -10,8 +10,34 @@
 </template>
 
 <script type='text/ecmascript-6'>
-export default {}
-document.addEventListener('COMContentLoaded', () => {
+import { mapGetters } from 'vuex'
+const getters = {
+  a: () => 1,
+  b: () => 2
+}
+
+function fn(keys) {
+  const data = {}
+  keys.forEach(key => {
+    if (getters.hasOwnProperty(key)) {
+      data[key] = getters[key]
+    }
+  })
+  return data
+}
+export default {
+  computed: {
+    ...mapGetters(['test']),
+    ...fn(['a', 'b', 'c'])
+  },
+  mounted() {
+    console.log(this.a, this.b)
+    // this.$store.dispatch('setTest', 9).then(() => {
+    //   console.log(this.$store.state.book.test)
+    // })
+  }
+}
+document.addEventListener('DOMContentLoaded', () => {
   const html = document.querySelector('html')
   let fontSize = window.innerWidth / 10
   fontSize = fontSize > 50 ? 50 : fontSize

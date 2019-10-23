@@ -1,4 +1,4 @@
-# vue-imooc-ebook
+# ebook-demo
 
 ## Project setup
 ```
