@@ -25,9 +25,16 @@ export default {
     },
     toggleTitleAndMenu() {
       this.setMenuVisible(!this.menuVisible)
+      if (this.menuVisible === false) {
+        this.setSettingVisible(-1)
+      }
     },
     hideTitleAndMenu() {
+      if (this.menuVisible === false) {
+        return
+      }
       this.setMenuVisible(false)
+      this.setSettingVisible(-1)
     },
     initEpub() {
       const url = 'http://192.168.1.74:8081/epub/' + this.fileName + '.epub'
@@ -57,6 +64,8 @@ export default {
         event.preventDefault()
         event.stopPropagation()
       })
+      this.themes = this.rendition.themes
+      this.themes.fontSize(this.defaultFontSize + 'px')
     }
   },
   mounted() {
@@ -64,6 +73,11 @@ export default {
     this.setFileName(fileName).then(() => {
       this.initEpub()
     })
+  },
+  watch: {
+    defaultFontSize() {
+      this.themes.fontSize(this.defaultFontSize + 'px')
+    }
   }
 }
 </script>
